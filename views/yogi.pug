@@ -1,0 +1,6 @@
+extends layout
+
+block content
+    h1 The number of the yogis is #{yogi.length}
+    each techyogi in yogi
+      pre #{JSON.stringify(techyogi, null, 4)}
