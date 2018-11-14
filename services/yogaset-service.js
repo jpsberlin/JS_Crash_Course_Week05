@@ -4,7 +4,7 @@ const PranayamaModel = require('../models/pranayama')
 const MeditationModel = require('../models/meditation')
 
 
-async function addYogakriya(yogasetId, techyogiId) {
+async function addYogakriya(yogasetId, asanaId, meditationId, pranayamaId) {
     const yogaset = await YogasetModel.findOne({ _id: yogasetId })
     const asana = await AsanaModel.findOne({ _id: asanaId })
     const meditation = await MeditationModel.findOne({ _id: meditationId })
@@ -19,7 +19,7 @@ async function addYogakriya(yogasetId, techyogiId) {
 }
 
 async function findAll() {
-    return YogasetModel.find().populate('yogakriya')
+    return YogasetModel.find().populate('yogakriyas')
 }
 
 async function add(asana) {
@@ -40,11 +40,11 @@ async function del(_id) {
 }
 
 async function find(_id) {
-    return YogasetModel.findOne({ _id }).populate('yogakriya')
+    return YogasetModel.findOne({ _id }).populate('yogakriyas')
 }
 
 module.exports = {
-    addYogaset,
+    addYogakriya,
     findAll,
     find,
     add,
